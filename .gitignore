@@ -10,6 +10,7 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 /[Pp]lugins/MultiPlay/
+/[Aa]ssets/Photon/Fusion/Scripts/Editor/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
