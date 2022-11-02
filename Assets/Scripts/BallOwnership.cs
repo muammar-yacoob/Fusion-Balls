@@ -21,7 +21,7 @@ namespace Born.FusionTest
                 var playerRef = player.GetComponent<NetworkObject>().InputAuthority;
                 transform.parent = player.transform;
                 //Object.aut
-                Object.ReleaseStateAuthority();
+                Object.RequestStateAuthority();
             }
             
         }
