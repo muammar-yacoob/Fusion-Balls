@@ -5,11 +5,12 @@ name: 4. Build Project 🏗️
 
 on: 
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    tags:
-      - "v*"
+#   push:
+#     branches:
+#       - main
+#     tags:
+#       - "v*"
+
 env:
     UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
     
