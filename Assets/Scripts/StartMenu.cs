@@ -18,7 +18,7 @@ namespace Born.FusionTest
         private string sessionName = "Default";
         private bool sessionStarted;
 
-        private int gameSceneIndex = 1;
+        private int gameSceneIndex = 0;
 
 
         private void Awake()
@@ -80,17 +80,13 @@ namespace Born.FusionTest
 
         private async void StartSession(GameMode mode)
         {
-            var sceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>();
-            //gameSceneIndex = SceneManager.GetActiveScene().buildIndex;
             joiningSession = true;
-            
             var result = await runner.StartGame(new StartGameArgs()
             {
                 GameMode = mode,
                 CustomLobbyName = LobbyName,
                 SessionName = sessionName,
                 Scene = gameSceneIndex,
-                SceneManager = sceneManager,
                 PlayerCount = 4
             });
 

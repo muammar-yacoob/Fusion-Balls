@@ -11,7 +11,6 @@ namespace Born.FusionTest
         public override void Spawned()
         {
             mat = GetComponentInChildren<Renderer>().material;
-           
             if (Object.HasInputAuthority)
                 SetupLocalPlayer();
             else

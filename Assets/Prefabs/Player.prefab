@@ -216,7 +216,7 @@ MonoBehaviour:
     RotBlendStart: 0.1
     RotBlendEnd: 0.5
     RotTeleportRadians: 1.5
-  UseLegacySharedModeInterpolation: 0
+  UseLegacySharedModeInterpolation: 1
   TargetInterpolationDelay: 0.03
 --- !u!114 &5000958276247397042
 MonoBehaviour:
