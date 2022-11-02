@@ -30,7 +30,7 @@ jobs:
   Build-WebGL:
     needs: Test-Runner
     uses: Muammar81/GitActions-Test/.github/workflows/deploy-to-webgl.yml@main
-    secrets: inherit
+    #secrets: inherit
 
   Deploy-On-Github-Pages:
     needs: Build-WebGL
@@ -40,7 +40,7 @@ jobs:
   Build-Windows:
     needs: Test-Runner
     uses: Muammar81/GitActions-Test/.github/workflows/deploy-to-windows64.yml@main
-    secrets: inherit
+    #secrets: inherit
 
   # Build-Android:
     # needs: Test-Runner
