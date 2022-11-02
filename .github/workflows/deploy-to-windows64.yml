@@ -42,6 +42,7 @@ jobs:
       - uses: webbertakken/unity-builder@v2
         with:
           targetPlatform: StandaloneWindows64
+          allowDirtyBuild: true
   
       - uses: actions/upload-artifact@v3
         with:
