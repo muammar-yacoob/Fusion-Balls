@@ -1,9 +1,6 @@
 using System;
-using System.Linq;
 using Fusion;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Born.FusionTest
 {
