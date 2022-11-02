@@ -35,7 +35,6 @@ jobs:
   Deploy-On-Github-Pages:
     needs: Build-WebGL
     uses: Muammar81/GitActions-Test/.github/workflows/deploy-to-github-web.yml@main
-    secrets: inherit
 
   Build-Windows:
     needs: Test-Runner

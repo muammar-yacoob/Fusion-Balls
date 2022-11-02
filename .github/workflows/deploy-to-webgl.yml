@@ -5,7 +5,7 @@ env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
   
 jobs:
-    buildWebGL:
+    Build-WebGL:
         name: Build for WebGL 🖥️
         runs-on: ubuntu-latest
         strategy:
@@ -47,3 +47,7 @@ jobs:
             with:
               name: build-WebGL
               path: build/WebGL
+              
+    Deploy-On-Github-Pages:
+        needs: Build-WebGL
+        uses: Muammar81/GitActions-Test/.github/workflows/deploy-to-github-web.yml@main
