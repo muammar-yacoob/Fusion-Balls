@@ -218,9 +218,11 @@ GameObject:
   m_Component:
   - component: {fileID: 498764636}
   - component: {fileID: 498764635}
-  - component: {fileID: 498764633}
   - component: {fileID: 498764638}
   - component: {fileID: 498764637}
+  - component: {fileID: 498764640}
+  - component: {fileID: 498764639}
+  - component: {fileID: 498764641}
   m_Layer: 0
   m_Name: Cube Player
   m_TagString: Untagged
@@ -228,21 +230,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &498764633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 498764632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3765282a2985ea4a98adfd205b625d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
-  rotationSpeed: 1.5
-  crown: {fileID: 1527666416}
 --- !u!33 &498764635
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -289,8 +276,10 @@ MonoBehaviour:
     RawGuidValue: 7b2a5c0ae473468796fb77173fbd1d61
   NestedObjects: []
   NetworkedBehaviours:
-  - {fileID: 498764633}
   - {fileID: 498764638}
+  - {fileID: 498764640}
+  - {fileID: 498764639}
+  - {fileID: 498764641}
   SimulationBehaviours: []
 --- !u!114 &498764638
 MonoBehaviour:
@@ -320,6 +309,53 @@ MonoBehaviour:
     RotTeleportRadians: 1.5
   UseLegacySharedModeInterpolation: 0
   TargetInterpolationDelay: 0.03
+--- !u!114 &498764639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498764632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 843da424695440adacbb75403ec1fd3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  crown: {fileID: 1527666416}
+--- !u!114 &498764640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498764632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3765282a2985ea4a98adfd205b625d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  rotationSpeed: 1
+--- !u!114 &498764641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498764632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95fa886bcb42729409b871105bdb4c56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  playerColors:
+  - {r: 0.20392159, g: 0.8980393, b: 1, a: 1}
+  - {r: 1, g: 0.28306073, b: 0, a: 1}
+  - {r: 0.9388572, g: 1, b: 0.1273585, a: 1}
+  - {r: 0.5633007, g: 1, b: 0.4292453, a: 1}
+  - {r: 0.9323854, g: 0.6462264, b: 1, a: 1}
 --- !u!1 &605401748
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,8 +668,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413525408}
-  m_LocalRotation: {x: 0, y: 0.9861905, z: -0.16561526, w: 0}
-  m_LocalPosition: {x: 0, y: 1.19, z: 3.007}
+  m_LocalRotation: {x: -0.063984044, y: 0.91309595, z: -0.15767965, w: -0.3705389}
+  m_LocalPosition: {x: 2.738852, y: 1.388862, z: 2.5726364}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
