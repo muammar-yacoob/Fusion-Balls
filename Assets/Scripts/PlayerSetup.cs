@@ -11,12 +11,15 @@ namespace Born.FusionTest
         public override void Spawned()
         {
             mat = GetComponentInChildren<Renderer>().material;
-            SetupInEditor();
-            
+           
             if (Object.HasInputAuthority)
                 SetupLocalPlayer();
             else
                 SetupRemotePlayer();
+            
+#if UNITY_EDITOR
+            SetupInEditor();
+#endif
             
         }
     
