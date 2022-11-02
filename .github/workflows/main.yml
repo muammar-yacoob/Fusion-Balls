@@ -31,8 +31,8 @@ jobs:
     needs: Test-Runner
     uses: Muammar81/GitActions-Test/.github/workflows/deploy-to-webgl.yml@main
     #secrets: inherit
-    with:
-      allowDirtyBuild: true
+    #with:
+      #allowDirtyBuild: true
 
   Deploy-On-Github-Pages:
     needs: Build-WebGL
@@ -42,8 +42,8 @@ jobs:
     needs: Test-Runner
     uses: Muammar81/GitActions-Test/.github/workflows/deploy-to-windows64.yml@main
     #secrets: inherit
-    with:
-      allowDirtyBuild: true
+    #with:
+      #allowDirtyBuild: true
 
   # Build-Android:
     # needs: Test-Runner
