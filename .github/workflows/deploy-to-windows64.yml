@@ -33,6 +33,7 @@ jobs:
       - name: Restore Library cache
         uses: actions/cache@v3
         with:
+          allowDirtyBuild: true
           path: Library
           key: Library-build-StandaloneWindows64
           restore-keys: |
@@ -41,11 +42,12 @@ jobs:
   
       - uses: webbertakken/unity-builder@v2
         with:
-          targetPlatform: StandaloneWindows64
-          #unityVersion: 2020.3.2f1
           allowDirtyBuild: true
+          targetPlatform: StandaloneWindows64
+          unityVersion: 2020.3.2f1
   
       - uses: actions/upload-artifact@v3
         with:
+          allowDirtyBuild: true
           name: build-StandaloneWindows64
           path: build/StandaloneWindows64
