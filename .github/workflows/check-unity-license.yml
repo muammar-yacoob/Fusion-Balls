@@ -1,0 +1,14 @@
+name: 2. Unity-License-Check ☑️
+on: [workflow_call, workflow_dispatch]
+
+env:
+    UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+
+jobs:
+   checkLicense:
+       name: 2. Unity license Check ☑️
+       runs-on: ubuntu-latest
+       steps:
+         - name: Fail - No license ☠️
+           if: ${{ !startsWith(env.UNITY_LICENSE, '<') }}
+           run: exit 1

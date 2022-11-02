@@ -1,0 +1,34 @@
+name: Release 📦 
+
+# Run on commit tags prefixed with "v" (e.g. "v0.1.4")
+# git tag v0.1.1
+# git push origin v0.1.1
+
+on: 
+  workflow_dispatch:
+  workflow_call:
+  push:
+    branches:
+      - main
+    tags:
+      - "v*"
+
+# Automatically create a GitHub Release, with release details specified (the relevant commits)
+jobs:
+  release:
+    name: "Release"
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          title: "Development Build"
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: v${{ env.RELEASE_VERSION }}
+          prerelease: true
+          #tag_name: "${{ github.ref }}"
+          #generate_release_notes: true
+#          script: |
+#            await github.request(`POST /repos/${{ github.repository }}/releases` , {
+#              tag_name: "${{ github.ref }}",
+#              generate_release_notes: true
+#            });

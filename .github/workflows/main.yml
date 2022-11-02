@@ -1,0 +1,39 @@
+name: 4. Build Project 🏗️
+on: [workflow_dispatch] # ,push]
+
+env:
+    UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+    repo: ${{ github.repository }}
+
+jobs:
+  Check-Unity-License:
+    uses: Muammar81/GitActions-Test/.github/workflows/check-unity-license.yml@main
+    secrets: inherit
+
+  Test-Runner:
+    uses: Muammar81/GitActions-Test/.github/workflows/test-runner.yml@main
+    secrets: inherit
+
+  Build-Release:
+    needs: Test-Runner
+    uses: Muammar81/GitActions-Test/.github/workflows/release.yml@main
+
+  Build-WebGL:
+    needs: Test-Runner
+    uses: Muammar81/GitActions-Test/.github/workflows/deploy-to-webgl.yml@main
+    secrets: inherit
+
+  Deploy-On-Github-Pages:
+    needs: Build-WebGL
+    uses: Muammar81/GitActions-Test/.github/workflows/deploy-to-github-web.yml@main
+    secrets: inherit
+
+  Build-Windows:
+    needs: Test-Runner
+    uses: Muammar81/GitActions-Test/.github/workflows/deploy-to-windows64.yml@main
+    secrets: inherit
+
+  # Build-Android:
+    # needs: Test-Runner
+    # uses: Muammar81/GitActions-Test/.github/workflows/deploy-to-android.yml@main
+    # secrets: inherit
