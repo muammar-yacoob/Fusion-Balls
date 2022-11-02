@@ -1,10 +1,18 @@
 name: 4. Build Project 🏗️
-on: [workflow_dispatch] # ,push]
+# Run on commit tags prefixed with "v" (e.g. "v0.1.4")
+# git tag v0.1.1
+# git push origin v0.1.1
 
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    tags:
+      - "v*"
 env:
     UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-    repo: ${{ github.repository }}
-
+    
 jobs:
   Check-Unity-License:
     uses: Muammar81/GitActions-Test/.github/workflows/check-unity-license.yml@main
