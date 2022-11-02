@@ -54,16 +54,19 @@ namespace Born.FusionTest
 
         private void OnGUI()
         {
-            DrawHud();
+            if (!sessionStarted)
+                DrawHud();
+            else
+                DrawTutorial();
         }
 
         private void DrawHud()
         {
-            if(sessionStarted) return;
+            
             
             if (joinLobby && !lobbyJoined || joiningSession)
             {
-                GUI.Label(new Rect(10, 10, 120, 20), "Connecting...");
+                GUI.Label(new Rect(10, 10, 120, 25), "Connecting...");
                 return;
             }
 
@@ -76,6 +79,15 @@ namespace Born.FusionTest
             {
                 StartSession(GameMode.Shared);
             }
+        }
+        
+        private void DrawTutorial()
+        {
+            string instructions = "Arrows to move\n Space Bar: Color\n 1 & 2 to Switch Authority";
+            Vector2 lableSize = new GUIStyle().CalcSize(new GUIContent(instructions));
+            Rect r = new Rect(10, Screen.height - 70, lableSize.x * 1.1f, lableSize.y * 1.2f);
+            GUI.contentColor = Color.white;
+            GUI.Box(r, instructions);
         }
 
         private async void StartSession(GameMode mode)
