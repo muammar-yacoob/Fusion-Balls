@@ -42,6 +42,8 @@ jobs:
       - uses: webbertakken/unity-builder@v2
         with:
           targetPlatform: Android
+          #unityVersion: 2020.3.2f1
+          allowDirtyBuild: true
 
       - uses: actions/upload-artifact@v3
         with:
