@@ -3,53 +3,112 @@ on: [workflow_call, workflow_dispatch]
 
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-  
+   
 jobs:
-  testRunner:
-      name: Test in ${{ matrix.testMode }} ✨
-      runs-on: ubuntu-latest
-      strategy:
-        fail-fast: false
-        matrix:
-          testMode:
-            #- EditMode
-            - PlayMode
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v3
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        projectPath:
+          - unity-project-with-correct-tests
+        unityVersion:
+          - 2019.2.11f1
+    steps:
+      ###########################
+      #         Checkout        #
+      ###########################
+      - uses: actions/checkout@v3
+        with:
+          lfs: true
 
-        - name: Create LFS file list
-          run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
+      ###########################
+      #          Cache          #
+      ###########################
+      - uses: actions/cache@v3
+        with:
+          path: ${{ matrix.projectPath }}/Library
+          key: Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}
+          restore-keys: |
+            Library-${{ matrix.projectPath }}-
+            Library-
+      # Configure test runner
+      - name: Run tests
+        id: playMode
+        uses: ./
+        with:
+          projectPath: ${{ matrix.projectPath }}
+          unityVersion: ${{ matrix.unityVersion }}
+          testMode: playmode
+          artifactsPath: artifacts/playmode
 
-        - name: Restore LFS cache
-          uses: actions/cache@v3
-          id: lfs-cache
-          with:
-            path: .git/lfs
-            key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
+      # Upload artifacts
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: Test results (play mode)
+          path: ${{ steps.playMode.outputs.artifactsPath }}
+          retention-days: 14
 
-        - name: Git LFS Pull
-          run: |
-            git lfs pull
-            git add .
-            git reset --hard
-        - name: Restore Library cache
-          uses: actions/cache@v3
-          with:
-            path: Library
-            key: Library-test-project-${{ matrix.targetPlatform }}
-            restore-keys: |
-              Library-test-project-
-              Library-
-        - name: Run tests
-          uses: game-ci/unity-test-runner@v2
-          id: testRunner
-          with:
-            testMode: ${{ matrix.testMode }}
-            checkName: ${{ matrix.testMode }} test results
-            githubToken: ${{ secrets.GITHUB_TOKEN }}
+      # Upload coverage
+      - name: Upload coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: Coverage results (play mode)
+          path: ${{ steps.playMode.outputs.coveragePath }}
+          retention-days: 14
 
-        - uses: actions/upload-artifact@v3
-          with:
-            name: Test results (${{ matrix.testMode }})
-            path: ${{ steps.testRunner.outputs.artifactsPath }}
+
+    # testRunnerInEditMode:
+    # name: Test edit mode 📝
+    # runs-on: ubuntu-latest
+    # strategy:
+      # fail-fast: false
+      # matrix:
+        # unityVersion:
+          # - 2019.2.11f1
+        # projectPath:
+          # - unity-project-with-correct-tests
+    # steps:
+      # ###########################
+      # #         Checkout        #
+      # ###########################
+      # - uses: actions/checkout@v3
+        # with:
+          # lfs: true
+
+      # ###########################
+      # #          Cache          #
+      # ###########################
+      # - uses: actions/cache@v3
+        # with:
+          # path: ${{ matrix.projectPath }}/Library
+          # key: Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}
+          # restore-keys: |
+            # Library-${{ matrix.projectPath }}-
+            # Library-
+      # # Configure test runner
+      # - name: Run tests
+        # id: editMode
+        # uses: ./
+        # with:
+          # projectPath: ${{ matrix.projectPath }}
+          # unityVersion: ${{ matrix.unityVersion }}
+          # testMode: editmode
+          # artifactsPath: artifacts/editmode
+
+      # # Upload artifacts
+      # - name: Upload test results
+        # uses: actions/upload-artifact@v3
+        # with:
+          # name: Test results (edit mode)
+          # path: ${{ steps.editMode.outputs.artifactsPath }}
+          # retention-days: 14
+
+      # # Upload coverage
+      # - name: Upload coverage results
+        # uses: actions/upload-artifact@v3
+        # with:
+          # name: Coverage results (edit mode)
+          # path: ${{ steps.editMode.outputs.coveragePath }}
+          # retention-days: 14
