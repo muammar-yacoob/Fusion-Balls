@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Born.FusionTest
 {
-    public class BallOwnership : NetworkBehaviour, IStateAuthorityChanged
+    public class Ball : NetworkBehaviour, IStateAuthorityChanged
     {
 
         public void StateAuthorityChanged()

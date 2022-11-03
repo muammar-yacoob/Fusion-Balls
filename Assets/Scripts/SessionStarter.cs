@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Fusion;
 using UnityEngine;
 
@@ -21,6 +22,12 @@ namespace Born.FusionTest
         protected async void StartSession(GameMode mode, string sessionName = "Default")
         {
             joiningSession = true;
+            
+            var customProps = new Dictionary<string, SessionProperty>()
+            {
+                { "BallCount", 0 }
+            };
+            
             var result = await runner.StartGame(new StartGameArgs()
             {
                 GameMode = mode,
@@ -28,7 +35,8 @@ namespace Born.FusionTest
                 //CustomLobbyName = "DEV",
                 Scene = gameSceneIndex,
                 SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>(),
-                PlayerCount = 4
+                PlayerCount = 4,
+                SessionProperties = customProps
             });
 
             if (!result.Ok)

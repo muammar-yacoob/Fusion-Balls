@@ -13,6 +13,9 @@ namespace Born.FusionTest
     {
         [SerializeField] private RectTransform sessionsListUI;
         [SerializeField] private Button joinButtonPrefab;
+        private int balls;
+
+        private const string BallCount = "BallCount";
         
         public override void Spawned() => Runner.AddCallbacks(this);
         public override void Despawned(NetworkRunner runner, bool hasState) => runner.RemoveCallbacks(this);
@@ -30,7 +33,12 @@ namespace Born.FusionTest
             {
                 if (!session.IsValid) return;
 
-                var sessionRecord = new SessionDescriptor(session.Name, session.PlayerCount,session.MaxPlayers);
+                if(session.Properties.TryGetValue(BallCount,out var tmpProperty))
+                {
+                    balls = (int)tmpProperty.PropertyValue;
+                }
+                
+                var sessionRecord = new SessionDescriptor(session.Name, session.PlayerCount,session.MaxPlayers, balls);
                 Debug.Log(sessionRecord.ToString());
                 
                 var buttonObject = Instantiate(joinButtonPrefab,sessionsListUI);
@@ -76,14 +84,16 @@ namespace Born.FusionTest
         public string SessionName { get; }
         public int MaxPlayers { get; }
         public int PlayerCount { get; }
+        public int Balls{ get; }
 
-        public SessionDescriptor(string sessionName, int playerCount,int maxPlayers)
+        public SessionDescriptor(string sessionName, int playerCount, int maxPlayers, int balls)
         {
             SessionName = sessionName;
             MaxPlayers = maxPlayers;
             PlayerCount = playerCount;
+            Balls = balls;
         }
 
-        public override string ToString() => ($"{SessionName}: [{PlayerCount}/{MaxPlayers}]");
+        public override string ToString() => ($"{SessionName}: [{PlayerCount}/{MaxPlayers}]. Balls:{Balls}");
     }
 }
