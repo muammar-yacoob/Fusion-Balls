@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Born.FusionTest
 {
-    public class LobbyStartMenu : StartMenu
+    public class StartMenuLobby : StartMenuBase
     {
         private bool joiningLobby;
         private const string LobbyName = "DEV";
@@ -38,10 +38,10 @@ namespace Born.FusionTest
 
         private void OnGUI()
         {
-            
+            if (runner.SessionInfo.IsValid) return;
             if (joiningLobby)
             {
-                GUI.Label(new Rect(10, 10, 120, 25), "Connecting...");
+                GUI.Label(new Rect(10, 10, 120, 25), "Joining Lobby...");
                 return;
             }
 

@@ -4,11 +4,12 @@ using UnityEngine;
 
 namespace Born.FusionTest
 {
-    public class SimpleStartMenu : StartMenu
+    public class StartMenuSimple : StartMenuBase
     {
         private string sessionName = "Default";
         private void OnGUI()
         {
+            if (runner.SessionInfo.IsValid) return;
             if (joiningSession)
             {
                 GUI.Label(new Rect(10, 10, 120, 25), "Connecting...");
@@ -26,8 +27,8 @@ namespace Born.FusionTest
             if (String.IsNullOrEmpty(sessionName)) return;
             if (GUI.Button(new Rect(10, 33, 120, 20), $"Start/Join {sessionName}"))
             {
-                StartSession(GameMode.Shared, sessionName);
                 joiningSession = true;
+                StartSession(GameMode.Shared, sessionName);
             }
         }
     }

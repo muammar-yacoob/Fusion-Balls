@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Born.FusionTest
 {
-    public abstract class StartMenu : MonoBehaviour
+    public abstract class StartMenuBase : MonoBehaviour
     {
         protected NetworkRunner runner;
         protected bool joiningSession;
@@ -25,7 +25,7 @@ namespace Born.FusionTest
             {
                 GameMode = mode,
                 SessionName = sessionName,
-                CustomLobbyName = "DEV",
+                //CustomLobbyName = "DEV",
                 Scene = gameSceneIndex,
                 SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>(),
                 PlayerCount = 4
