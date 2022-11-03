@@ -30,9 +30,9 @@ jobs:
 
   Build-WebGL:
     needs: Test-Runner
-    uses: /.github/workflows/deploy-to-webgl.yml@main
+    #uses: /.github/workflows/deploy-to-webgl.yml@main
     #uses: ${{ env.repo }}/.github/workflows/deploy-to-webgl.yml@main
-    #uses: Muammar81/Fusion-Shared/.github/workflows/deploy-to-webgl.yml@main
+    uses: Muammar81/Fusion-Shared/.github/workflows/deploy-to-webgl.yml@main
     secrets: inherit
     with:
       allowDirtyBuild: true
