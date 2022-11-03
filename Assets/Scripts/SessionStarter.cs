@@ -38,5 +38,8 @@ namespace Born.FusionTest
                 return;
             }
         }
+
+        private void OnDestroy() => runner.Disconnect(runner.LocalPlayer);
+        private void OnApplicationQuit() => runner.Disconnect(runner.LocalPlayer);
     }
 }

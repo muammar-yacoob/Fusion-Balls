@@ -30,7 +30,7 @@ namespace Born.FusionTest
             {
                 if (!session.IsValid) return;
 
-                var sessionRecord = new SessionDescriptor(session.Name, session.PlayerCount);
+                var sessionRecord = new SessionDescriptor(session.Name, session.PlayerCount,session.MaxPlayers);
                 Debug.Log(sessionRecord.ToString());
                 
                 var buttonObject = Instantiate(joinButtonPrefab,sessionsListUI);
@@ -75,13 +75,15 @@ namespace Born.FusionTest
     {
         public string SessionName { get; }
         public int MaxPlayers { get; }
+        public int PlayerCount { get; }
 
-        public SessionDescriptor(string sessionName, int maxPlayers)
+        public SessionDescriptor(string sessionName, int playerCount,int maxPlayers)
         {
             SessionName = sessionName;
             MaxPlayers = maxPlayers;
+            PlayerCount = playerCount;
         }
 
-        public override string ToString() => ($"{SessionName}: [{MaxPlayers}]");
+        public override string ToString() => ($"{SessionName}: [{PlayerCount}/{MaxPlayers}]");
     }
 }
