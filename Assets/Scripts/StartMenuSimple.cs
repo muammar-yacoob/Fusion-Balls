@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Born.FusionTest
 {
-    public class StartMenuSimple : StartMenuBase
+    public class StartMenuSimple : SessionStarter
     {
         private string sessionName = "Default";
         private void OnGUI()

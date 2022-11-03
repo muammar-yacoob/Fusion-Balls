@@ -1,19 +1,22 @@
-﻿using System;
+using System;
 using Fusion;
 using UnityEngine;
 
 namespace Born.FusionTest
 {
-    public class StartMenuLobby : SessionStarter
+    public class SessionJoin : SessionStarter
     {
         private bool joiningLobby;
         private const string LobbyName = "DEV";
-        private string sessionName = "Default";
+        
         private void Awake()
         {
             base.Awake();
             StartLobby();
+            LobbyController.OnJoinSession += Handle_OnJoinSession;
         }
+
+        private void OnDestroy() => LobbyController.OnJoinSession -= Handle_OnJoinSession;
 
         async void StartLobby()
         {
@@ -36,27 +39,24 @@ namespace Born.FusionTest
             joiningLobby = false;
         }
 
-        private void OnGUI()
+        private void Update()
         {
             if (runner.SessionInfo.IsValid) return;
             if (joiningLobby)
             {
-                GUI.Label(new Rect(10, 10, 120, 25), "Joining Lobby...");
+                //GUI.Label(new Rect(10, 10, 120, 25), "Joining Lobby...");
                 return;
             }
 
             if (joiningSession) return;
-            JoinSessionUI();
         }
         
-        private void JoinSessionUI()
+        private void Handle_OnJoinSession(string sessionName)
         {
-            sessionName = GUI.TextField(new Rect(10, 10, 120, 20), sessionName, 10);
-
             if (String.IsNullOrEmpty(sessionName)) return;
-            if (GUI.Button(new Rect(10, 33, 120, 20), $"Start/Join {sessionName}"))
             {
                 joiningSession = true;
+                print($"joining {sessionName}...");
                 StartSession(GameMode.Shared, sessionName);
             }
         }

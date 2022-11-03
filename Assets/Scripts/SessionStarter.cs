@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace Born.FusionTest
 {
-    public abstract class StartMenuBase : MonoBehaviour
+    public abstract class SessionStarter : MonoBehaviour
     {
         protected NetworkRunner runner;
         protected bool joiningSession;
 
-        protected int gameSceneIndex = 0;
+        protected int gameSceneIndex = 2;
 
         protected void Awake()
         {
