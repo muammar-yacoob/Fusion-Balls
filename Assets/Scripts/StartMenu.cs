@@ -1,101 +1,31 @@
-using System;
+﻿using System;
 using Fusion;
 using UnityEngine;
 
 namespace Born.FusionTest
 {
-    public class StartMenu : MonoBehaviour
+    public abstract class StartMenu : MonoBehaviour
     {
-        private NetworkRunner runner;
+        protected NetworkRunner runner;
+        protected bool joiningSession;
 
-        [SerializeField] private bool joinLobby;
-        private const string LobbyName = "DEV";
-        private bool lobbyJoined;
-        private bool joiningSession;
-        
-        private string sessionName = "Default";
-        private bool sessionStarted;
+        protected int gameSceneIndex = 0;
 
-        private int gameSceneIndex = 0;
-
-
-        private void Awake()
+        protected void Awake()
         {
             runner = FindObjectOfType<NetworkRunner>();
             runner ??= gameObject.AddComponent<NetworkRunner>();
-
             runner.ProvideInput = true;
-            
-            if(joinLobby)
-                StartLobby();
-        }
-        async void StartLobby()
-        {
-            if (runner == null)
-            {
-                Debug.LogError("No Runner Detected");
-                return;
-            }
-
-            //Join a lobby for the machmaker
-            var result = await runner.JoinSessionLobby(SessionLobby.Custom, LobbyName);
-
-            if (!result.Ok)
-            {
-                Debug.LogError($"Failed to Join Lobby: {result.ShutdownReason}");
-                return;
-            }
-
-            lobbyJoined = true;
-            print($"Lobby {LobbyName} joined");
-        }
-
-        private void OnGUI()
-        {
-            if (!sessionStarted)
-                DrawHud();
-            else
-                DrawTutorial();
-        }
-
-        private void DrawHud()
-        {
-            
-            
-            if (joinLobby && !lobbyJoined || joiningSession)
-            {
-                GUI.Label(new Rect(10, 10, 120, 25), "Connecting...");
-                return;
-            }
-
-            if (sessionStarted) return;
-
-            sessionName = GUI.TextField(new Rect(10, 10, 120, 20), sessionName, 10);
-
-            if (String.IsNullOrEmpty(sessionName)) return;
-            if (GUI.Button(new Rect(10, 33, 120, 20), $"Start/Join {sessionName}"))
-            {
-                StartSession(GameMode.Shared);
-            }
         }
         
-        private void DrawTutorial()
-        {
-            string instructions = "Arrows to move\n Space Bar: Color\n 1 to Switch Authority";
-            Vector2 lableSize = new GUIStyle().CalcSize(new GUIContent(instructions));
-            Rect r = new Rect(10, Screen.height - 70, lableSize.x * 1.1f, lableSize.y * 1.2f);
-            GUI.contentColor = Color.white;
-            GUI.Box(r, instructions);
-        }
-
-        private async void StartSession(GameMode mode)
+        protected async void StartSession(GameMode mode, string sessionName = "Default")
         {
             joiningSession = true;
             var result = await runner.StartGame(new StartGameArgs()
             {
                 GameMode = mode,
-                CustomLobbyName = LobbyName,
                 SessionName = sessionName,
+                CustomLobbyName = "DEV",
                 Scene = gameSceneIndex,
                 SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>(),
                 PlayerCount = 4
@@ -104,11 +34,9 @@ namespace Born.FusionTest
             if (!result.Ok)
             {
                 Debug.LogError($"Failed to Start: {result.ShutdownReason}");
-                sessionStarted = false;
                 joiningSession = false;
                 return;
             }
-            sessionStarted = true;
         }
     }
 }
