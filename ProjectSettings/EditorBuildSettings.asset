@@ -7,9 +7,12 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
+    guid: dfb98fdf9c2fa5740ab787bfa226c0d3
+  - enabled: 1
+    path: Assets/Scenes/Teacher Menu.unity
     guid: f5e69326df960b0428b1545ef44a713f
   - enabled: 1
-    path: Assets/Scenes/Lobby Menu.unity
+    path: Assets/Scenes/Student Menu.unity
     guid: 6013a50fcb0327542baae727ad2b9d93
   - enabled: 1
     path: Assets/Scenes/Level01.unity

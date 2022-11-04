@@ -48,14 +48,14 @@ namespace Born.FusionTest
                 return;
             }
 
-            if (joiningSession) return;
+            if (JoiningSession) return;
         }
         
         private void Handle_OnJoinSession(string sessionName)
         {
             if (String.IsNullOrEmpty(sessionName)) return;
             {
-                joiningSession = true;
+                JoiningSession = true;
                 print($"joining {sessionName}...");
                 StartSession(GameMode.Shared, sessionName);
             }

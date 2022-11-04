@@ -27,7 +27,6 @@ namespace Born.FusionTest
         private void Spawn()
         {
             timer = 0;
-            print("spawning...");
             var pos = Random.insideUnitSphere * Random.Range(0.1f,10);
             pos.y = 8;
             var ballObject = Runner.Spawn(ballPrefab,pos,Quaternion.identity);

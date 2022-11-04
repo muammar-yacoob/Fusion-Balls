@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 #if FUSION_USE_ADDRESSABLES

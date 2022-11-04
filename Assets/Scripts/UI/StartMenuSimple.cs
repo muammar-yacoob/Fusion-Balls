@@ -10,13 +10,13 @@ namespace Born.FusionTest
         private void OnGUI()
         {
             if (runner.SessionInfo.IsValid) return;
-            if (joiningSession)
+            if (JoiningSession)
             {
                 GUI.Label(new Rect(10, 10, 120, 25), "Connecting...");
                 return;
             }
 
-            if (joiningSession) return;
+            if (JoiningSession) return;
             JoinSessionUI();
         }
         
@@ -27,7 +27,7 @@ namespace Born.FusionTest
             if (String.IsNullOrEmpty(sessionName)) return;
             if (GUI.Button(new Rect(10, 33, 120, 20), $"Start/Join {sessionName}"))
             {
-                joiningSession = true;
+                JoiningSession = true;
                 StartSession(GameMode.Shared, sessionName);
             }
         }

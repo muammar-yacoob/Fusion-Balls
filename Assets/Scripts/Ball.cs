@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Fusion;
-using UnityEngine;
 
 namespace Born.FusionTest
 {
@@ -11,7 +7,7 @@ namespace Born.FusionTest
 
         public void StateAuthorityChanged()
         {
-            print($"Ball is now owned by {Object.StateAuthority}");
+            //print($"Ball is now owned by {Object.StateAuthority}");
         }
 
         // private void OnCollisionEnter(Collision collision)

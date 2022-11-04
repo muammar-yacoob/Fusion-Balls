@@ -45,7 +45,7 @@ namespace Born.FusionTest
                 return;
             }
 
-            if (joiningSession) return;
+            if (JoiningSession) return;
             JoinSessionUI();
         }
         
@@ -56,7 +56,7 @@ namespace Born.FusionTest
             if (String.IsNullOrEmpty(sessionName)) return;
             if (GUI.Button(new Rect(10, 33, 120, 20), $"Start/Join {sessionName}"))
             {
-                joiningSession = true;
+                JoiningSession = true;
                 StartSession(GameMode.Shared, sessionName);
             }
         }

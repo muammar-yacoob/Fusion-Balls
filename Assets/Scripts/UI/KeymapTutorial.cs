@@ -2,7 +2,7 @@
 
 namespace Born.FusionTest
 {
-    public class DrawTutorial : MonoBehaviour
+    public class KeymapTutorial : MonoBehaviour
     {
         private void OnGUI()
         {

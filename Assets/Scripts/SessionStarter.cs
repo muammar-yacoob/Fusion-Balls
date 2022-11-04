@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Fusion;
 using UnityEngine;
 
@@ -8,9 +7,9 @@ namespace Born.FusionTest
     public abstract class SessionStarter : MonoBehaviour
     {
         protected NetworkRunner runner;
-        protected bool joiningSession;
+        protected bool JoiningSession;
 
-        protected int gameSceneIndex = 2;
+        private readonly int gameSceneIndex = 3;
 
         protected void Awake()
         {
@@ -18,21 +17,21 @@ namespace Born.FusionTest
             runner ??= gameObject.AddComponent<NetworkRunner>();
             runner.ProvideInput = true;
         }
-        
+
         protected async void StartSession(GameMode mode, string sessionName = "Default")
         {
-            joiningSession = true;
-            
+            JoiningSession = true;
+
+
             var customProps = new Dictionary<string, SessionProperty>()
             {
                 { "BallCount", 0 }
             };
-            
+
             var result = await runner.StartGame(new StartGameArgs()
             {
                 GameMode = mode,
                 SessionName = sessionName,
-                //CustomLobbyName = "DEV",
                 Scene = gameSceneIndex,
                 SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>(),
                 PlayerCount = 4,
@@ -42,12 +41,18 @@ namespace Born.FusionTest
             if (!result.Ok)
             {
                 Debug.LogError($"Failed to Start: {result.ShutdownReason}");
-                joiningSession = false;
+                JoiningSession = false;
                 return;
             }
+
+            print($"Loading Scene[{gameSceneIndex}]...");
+            runner.SetActiveScene(gameSceneIndex);
         }
 
-        private void OnDestroy() => runner.Disconnect(runner.LocalPlayer);
-        private void OnApplicationQuit() => runner.Disconnect(runner.LocalPlayer);
+        private void OnApplicationQuit()
+        {
+            if(runner.IsServer)
+                runner.Disconnect(runner.LocalPlayer);
+        }
     }
 }

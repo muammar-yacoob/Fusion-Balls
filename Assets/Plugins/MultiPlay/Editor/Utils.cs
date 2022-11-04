@@ -1,4 +1,3 @@
-using static System.Reflection.Assembly;
 using UnityEngine;
 
 namespace MultiPlay.Editor

@@ -13,7 +13,6 @@
 
 namespace Fusion.CodeGen {
   using System;
-  using System.Linq;
   using Mono.Cecil.Cil;
 
   internal struct ILMacroStruct : ILProcessorMacro {
@@ -60,7 +59,6 @@ namespace Fusion.CodeGen {
 namespace Fusion.CodeGen {
 
   using System;
-  using System.Collections.Generic;
   using System.Linq;
   using System.Runtime.CompilerServices;
   using Mono.Cecil;
@@ -415,11 +413,7 @@ namespace Fusion.CodeGen {
 namespace Fusion.CodeGen {
   using System;
   using System.Collections.Generic;
-  using System.IO;
   using System.Linq;
-  using UnityEditor;
-  using UnityEditor.Compilation;
-  using UnityEngine;
   using System.Runtime.CompilerServices;
   using static Fusion.CodeGen.ILWeaverOpCodes;
   using Mono.Cecil;
@@ -427,7 +421,6 @@ namespace Fusion.CodeGen {
   using Mono.Cecil.Rocks;
   using Mono.Collections.Generic;
   using CompilerAssembly = UnityEditor.Compilation.Assembly;
-  using FieldAttributes = Mono.Cecil.FieldAttributes;
   using MethodAttributes = Mono.Cecil.MethodAttributes;
   using ParameterAttributes = Mono.Cecil.ParameterAttributes;
 
@@ -1776,22 +1769,13 @@ namespace Fusion.CodeGen {
 #if FUSION_WEAVER && FUSION_HAS_MONO_CECIL
 namespace Fusion.CodeGen {
   using System;
-  using System.Collections.Generic;
-  using System.IO;
-  using System.Linq;
-  using UnityEditor;
-  using UnityEditor.Compilation;
   using UnityEngine;
   using System.Runtime.CompilerServices;
   using static Fusion.CodeGen.ILWeaverOpCodes;
   using Mono.Cecil;
   using Mono.Cecil.Cil;
-  using Mono.Cecil.Rocks;
-  using Mono.Collections.Generic;
   using CompilerAssembly = UnityEditor.Compilation.Assembly;
   using FieldAttributes = Mono.Cecil.FieldAttributes;
-  using MethodAttributes = Mono.Cecil.MethodAttributes;
-  using ParameterAttributes = Mono.Cecil.ParameterAttributes;
 
   unsafe partial class ILWeaver {
 
@@ -2022,21 +2006,16 @@ namespace Fusion.CodeGen {
 namespace Fusion.CodeGen {
   using System;
   using System.Collections.Generic;
-  using System.IO;
   using System.Linq;
-  using UnityEditor;
-  using UnityEditor.Compilation;
   using UnityEngine;
   using System.Runtime.CompilerServices;
   using static Fusion.CodeGen.ILWeaverOpCodes;
   using Mono.Cecil;
   using Mono.Cecil.Cil;
   using Mono.Cecil.Rocks;
-  using Mono.Collections.Generic;
   using CompilerAssembly = UnityEditor.Compilation.Assembly;
   using FieldAttributes = Mono.Cecil.FieldAttributes;
   using MethodAttributes = Mono.Cecil.MethodAttributes;
-  using ParameterAttributes = Mono.Cecil.ParameterAttributes;
   using UnityEngine.Scripting;
 
   unsafe partial class ILWeaver {
@@ -2756,8 +2735,6 @@ namespace Fusion.CodeGen {
   using System.Collections.Generic;
   using System.Linq;
   using System.Reflection;
-  using Assembly = UnityEditor.Compilation.Assembly;
-
   using Mono.Cecil;
 
   public class ILWeaverImportedType {
@@ -3776,13 +3753,8 @@ namespace Fusion.CodeGen {
   using System;
   using System.Collections.Generic;
   using System.Linq;
-  using System.Runtime.CompilerServices;
-  using System.Text;
-  using System.Text.RegularExpressions;
-  using System.Threading.Tasks;
   using Mono.Cecil;
   using Mono.Cecil.Cil;
-  using Mono.Cecil.Rocks;
 
   public static class ILWeaverExtensions {
 
@@ -5048,9 +5020,6 @@ namespace Fusion.CodeGen {
 
 #if FUSION_WEAVER && FUSION_HAS_MONO_CECIL
 namespace Fusion.CodeGen {
-  using System;
-  using System.Diagnostics;
-
   using Mono.Cecil;
   using Mono.Cecil.Cil;
 
@@ -5348,10 +5317,6 @@ namespace Fusion.CodeGen {
 #if FUSION_WEAVER
 namespace Fusion.CodeGen {
   using System;
-  using System.Collections.Generic;
-  using System.Linq;
-  using System.Text;
-  using System.Threading.Tasks;
 
   public partial class ILWeaverSettings {
 
@@ -6042,12 +6007,10 @@ namespace Fusion.CodeGen {
   using System;
   using System.Collections.Generic;
   using System.Linq;
-  using System.Runtime.InteropServices;
   using Mono.Cecil;
   using Mono.Cecil.Cil;
   using Mono.Cecil.Rocks;
   using UnityEngine;
-  using Debug = System.Diagnostics.Debug;
   using static ILWeaverOpCodes;
 
   public class NetworkTypeInfoRegistry {
