@@ -2,7 +2,7 @@ using System.Linq;
 using Fusion;
 using UnityEngine;
 
-namespace Born.FusionTest
+namespace Born.FusionTest.Player
 {
     public class PlayerColor : NetworkBehaviour
     {
@@ -26,7 +26,7 @@ namespace Born.FusionTest
             if(Object == null) return;
             if (!Object.HasStateAuthority) return;
             
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.C))
             {
                 colorIndex++;
                 SetColor();

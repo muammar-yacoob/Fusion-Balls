@@ -1,15 +1,14 @@
-using Fusion;
-using UnityEngine.SceneManagement;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Born.FusionTest
 {
-    public class QuitSession : NetworkBehaviour
+    public class QuitSession : MonoBehaviour
     {
-        public override void Spawned()
+        private void Awake()
         {
             var quitButton = GetComponent<Button>();
-            quitButton.onClick.AddListener(() => SceneManager.LoadScene(0));
+            quitButton.onClick.AddListener(App.Instance.Disconnect);
         }
     }
 }

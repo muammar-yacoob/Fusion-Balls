@@ -18,4 +18,6 @@ namespace Born.FusionTest.Utils
             Destroy(gameObject);
         }
     }
+    
+    
 }

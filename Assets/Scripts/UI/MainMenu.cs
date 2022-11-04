@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static System.Environment;
 
 namespace Born.FusionTest
 {
@@ -13,8 +14,6 @@ namespace Born.FusionTest
 
         [SerializeField] private TMP_InputField nickNameUI;
 
-        private int teacherSceneIndex = 1;
-        private int studentSceneIndex = 2;
         private const string nickNamePref = "NICK_NAME";
 
         private void Awake()
@@ -28,26 +27,26 @@ namespace Born.FusionTest
         private void LoginAsTeacher()
         {
             SaveNickName();
-            SceneManager.LoadScene(teacherSceneIndex);
+            SceneManager.LoadScene(App.Instance.TeacherScene);
         }
 
        private void LoginAsStudent()
         {
             SaveNickName();
-            SceneManager.LoadScene(studentSceneIndex);
+            SceneManager.LoadScene(App.Instance.StudentScene);
         }
 
        private string LoadNickName()
        {
            var nickName = PlayerPrefs.GetString(nickNamePref);
-           nickName = String.IsNullOrEmpty(nickName) ? System.Environment.UserName : nickName;
+           nickName = String.IsNullOrEmpty(nickName) ? UserName : nickName;
            return nickName;
        }
        
        private void SaveNickName()
        {
            var nickName = nickNameUI.text;
-           nickName = String.IsNullOrEmpty(nickName) ? System.Environment.UserName : nickName;
+           nickName = String.IsNullOrEmpty(nickName) ? UserName : nickName;
            nickName = nickName.ToUpper();
            PlayerPrefs.SetString(nickNamePref, nickName);
        }

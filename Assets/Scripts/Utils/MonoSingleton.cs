@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Born.FusionTest.Utils
 {
@@ -19,4 +18,5 @@ namespace Born.FusionTest.Utils
             Destroy(gameObject);
         }
     }
+    
 }

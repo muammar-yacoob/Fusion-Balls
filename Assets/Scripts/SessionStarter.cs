@@ -7,6 +7,7 @@ namespace Born.FusionTest
     public abstract class SessionStarter : MonoBehaviour
     {
         protected NetworkRunner runner;
+        private NetworkSceneManagerDefault netSceneManager;
         protected bool JoiningSession;
 
         private readonly int gameSceneIndex = 3;
@@ -16,6 +17,9 @@ namespace Born.FusionTest
             runner = FindObjectOfType<NetworkRunner>();
             runner ??= gameObject.AddComponent<NetworkRunner>();
             runner.ProvideInput = true;
+            
+            netSceneManager = FindObjectOfType<NetworkSceneManagerDefault>();
+            netSceneManager ??= gameObject.AddComponent<NetworkSceneManagerDefault>();
         }
 
         protected async void StartSession(GameMode mode, string sessionName = "Default")
@@ -33,7 +37,7 @@ namespace Born.FusionTest
                 GameMode = mode,
                 SessionName = sessionName,
                 Scene = gameSceneIndex,
-                SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>(),
+                SceneManager = netSceneManager,
                 PlayerCount = 4,
                 SessionProperties = customProps
             });
@@ -49,10 +53,6 @@ namespace Born.FusionTest
             runner.SetActiveScene(gameSceneIndex);
         }
 
-        private void OnApplicationQuit()
-        {
-            if(runner.IsServer)
-                runner.Disconnect(runner.LocalPlayer);
-        }
+
     }
 }

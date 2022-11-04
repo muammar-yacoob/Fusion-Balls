@@ -1,11 +1,10 @@
 using System.Collections.Generic;
-using Born.FusionTest.Utils;
 using Fusion;
 using UnityEngine;
 
 namespace Born.FusionTest
 {
-    public class SessionController : NetworkSingleton<SessionController>
+    public class SessionController : NetworkBehaviour
     {
         private float spawnDelay = 1f;
         private float timer;
