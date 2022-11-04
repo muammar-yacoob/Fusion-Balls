@@ -39,13 +39,12 @@ namespace Born.FusionTest
                 }
                 
                 var sessionRecord = new SessionDescriptor(session.Name, session.PlayerCount,session.MaxPlayers, balls);
-                Debug.Log(sessionRecord.ToString());
-                
                 var buttonObject = Instantiate(joinButtonPrefab,sessionsListUI);
-                buttonObject.onClick.AddListener(() => OnJoinSessionButtonClicked(session.Name));
-                
                 var textObject = buttonObject.GetComponentInChildren<TMP_Text>();
                 textObject.text = sessionRecord.ToString();
+                buttonObject.onClick.AddListener(() => OnJoinSession?.Invoke(session.Name));
+                var isFull = (session.PlayerCount == session.MaxPlayers);
+                buttonObject.interactable = isFull;
             }
         }
 
@@ -53,11 +52,6 @@ namespace Born.FusionTest
         {
             var oldButtons = sessionsListUI.GetComponentsInChildren<Button>();
             oldButtons.ToList().ForEach(b => Destroy(b.gameObject));
-        }
-
-        private void OnJoinSessionButtonClicked(string sessionName)
-        {
-            OnJoinSession?.Invoke(sessionName);
         }
 
         #region Other Callbacks

@@ -1,10 +1,11 @@
 using System.Collections.Generic;
+using Born.FusionTest.Utils;
 using Fusion;
 using UnityEngine;
 
 namespace Born.FusionTest
 {
-    public class SessionController : NetworkBehaviour
+    public class SessionController : NetworkSingleton<SessionController>
     {
         private float spawnDelay = 1f;
         private float timer;
@@ -12,6 +13,8 @@ namespace Born.FusionTest
 
         private void Update()
         {
+            if (Runner == null) return;
+            if (Runner.State != NetworkRunner.States.Running) return;
             if (CanUpdate)
             {
                 int ballCount = FindObjectsOfType<Ball>().Length;

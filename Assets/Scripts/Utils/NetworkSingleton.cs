@@ -1,9 +1,8 @@
-﻿using System;
-using UnityEngine;
+using Fusion;
 
 namespace Born.FusionTest.Utils
 {
-    public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
+    public abstract class NetworkSingleton<T> : NetworkBehaviour where T : NetworkBehaviour
     {
         public static T Instance { get; private set; }
         protected virtual void Awake()
