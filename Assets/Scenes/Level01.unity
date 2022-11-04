@@ -861,7 +861,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballPrefab:
     RawGuidValue: a07198c275f94b44abdfbe99f004c7ab
-  spawnDelay: 1
+  spawnDelay: 5
 --- !u!1 &1756711433
 GameObject:
   m_ObjectHideFlags: 0
