@@ -25,7 +25,6 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: v${{ env.RELEASE_VERSION }}
           prerelease: true
-          node-version: 16
           #tag_name: "${{ github.ref }}"
           #generate_release_notes: true
 #          script: |
