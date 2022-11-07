@@ -9,7 +9,7 @@ namespace Born.FusionTest.Utils
         {
             if(Instance != null) Destroy(gameObject);
             Instance = this as T;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
 
         protected void OnApplicationQuit()

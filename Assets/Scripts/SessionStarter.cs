@@ -24,6 +24,7 @@ namespace Born.FusionTest
 
         protected async void StartSession(GameMode mode, string sessionName = "Default")
         {
+            print("starting session "+sessionName);
             JoiningSession = true;
 
 

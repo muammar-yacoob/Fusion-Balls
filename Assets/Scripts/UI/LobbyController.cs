@@ -6,24 +6,33 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using System.Reflection;
 
 namespace Born.FusionTest
 {
     public class LobbyController : NetworkBehaviour, INetworkRunnerCallbacks
     {
+         [SerializeField] private Button joinButtonPrefab;
         [SerializeField] private RectTransform sessionsListUI;
-        [SerializeField] private Button joinButtonPrefab;
         private int balls;
 
         private const string BallCount = "BallCount";
-        
-        public override void Spawned() => Runner.AddCallbacks(this);
+
+
+        public override void Spawned()
+        {
+            print(MethodBase.GetCurrentMethod().Name);
+            Runner.AddCallbacks(this);
+        }
+
         public override void Despawned(NetworkRunner runner, bool hasState) => runner.RemoveCallbacks(this);
 
         public static event Action<string> OnJoinSession = delegate { };
 
         public void OnSessionListUpdated(NetworkRunner runner, List<SessionInfo> sessionList)
         {
+            print(MethodBase.GetCurrentMethod().Name);
+            if (sessionsListUI == null) return;
             Debug.Log($"Sessions List Updated: Count:{sessionList.Count}");
             ClearExistingButtons();
             if (sessionList.Count == 0) return;
@@ -39,12 +48,16 @@ namespace Born.FusionTest
                 }
                 
                 var sessionRecord = new SessionDescriptor(session.Name, session.PlayerCount,session.MaxPlayers, balls);
+                Debug.Log(sessionRecord.ToString());
+                
                 var buttonObject = Instantiate(joinButtonPrefab,sessionsListUI);
+                buttonObject.onClick.AddListener(() => OnJoinSessionButtonClicked(session.Name));
+                
                 var textObject = buttonObject.GetComponentInChildren<TMP_Text>();
                 textObject.text = sessionRecord.ToString();
-                buttonObject.onClick.AddListener(() => OnJoinSession?.Invoke(session.Name));
+                
                 var isFull = (session.PlayerCount == session.MaxPlayers);
-                buttonObject.interactable = isFull;
+                buttonObject.interactable = !isFull;
             }
         }
 
@@ -52,6 +65,12 @@ namespace Born.FusionTest
         {
             var oldButtons = sessionsListUI.GetComponentsInChildren<Button>();
             oldButtons.ToList().ForEach(b => Destroy(b.gameObject));
+        }
+
+        private void OnJoinSessionButtonClicked(string sessionName)
+        {
+            print(MethodBase.GetCurrentMethod().Name);
+            OnJoinSession?.Invoke(sessionName);
         }
 
         #region Other Callbacks
@@ -90,4 +109,6 @@ namespace Born.FusionTest
 
         public override string ToString() => ($"{SessionName}: [{PlayerCount}/{MaxPlayers}]. Balls:{Balls}");
     }
-}
+    }
+
+
