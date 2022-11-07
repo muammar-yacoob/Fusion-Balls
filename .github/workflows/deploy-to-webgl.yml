@@ -48,10 +48,15 @@ jobs:
               name: build-WebGL
               path: build/WebGL
 
-            name: Deploy-On-Github-Pages
-          - name: Checkout code
+    Deploy-On-Github-Pages:
+        name: Publish a webpage
+        runs-on: ubuntu-latest
+        needs: Build-WebGL
+
+        steps:
+          - name: Checkout codex #required to use local relative path
             uses: actions/checkout@v3
 
-          - name: publishd
+          - name: publish
             uses: ./.github/workflows/deploy-to-github-web.yml@main
             
