@@ -7,7 +7,9 @@ on:
     branches:    
       - main
       - 'releases/**'
-
+env: 
+  WEB_DIR: build/WebGL
+  
 jobs:
   deployPages:
       name: Deploy to Github Pages 🚀 🕸 
@@ -16,17 +18,19 @@ jobs:
        - name: Checkout code
          uses: actions/checkout@v3
 
-       - uses: actions/download-artifact@v3
+       - name: Download artifacts2
+         uses: dawidd6/action-download-artifact@v2.24.0
          with:
-           name: build-WebGL
-           path: build
-
-       - name: Display structure of root files
+          workflow: deploy-to-webgl.yml
+          workflow_conclusion: success   
+          path: build
+          
+       - name: Test downloads
          run: ls -R
-         working-directory: build/WebGL
+         working-directory: build
 
        - name: Deploy 🚀
          uses: JamesIves/github-pages-deploy-action@4.1.4
          with:
            branch: gh-pages
-           folder: build/WebGL
+           folder: build/build-WebGL/WebGL
