@@ -53,5 +53,5 @@ jobs:
             uses: actions/checkout@v3
 
           - name: publishd
-            uses: /.github/workflows/deploy-to-github-web.yml@main
+            uses: ./.github/workflows/deploy-to-github-web.yml@main
             
