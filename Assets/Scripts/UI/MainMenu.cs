@@ -14,7 +14,7 @@ namespace Born.FusionTest
 
         [SerializeField] private TMP_InputField nickNameUI;
 
-        private const string nickNamePref = "NICK_NAME";
+        private const string NICK_NAME_PREF = "NICK_NAME";
 
         private void Awake()
         {
@@ -38,7 +38,7 @@ namespace Born.FusionTest
 
        private string LoadNickName()
        {
-           var nickName = PlayerPrefs.GetString(nickNamePref);
+           var nickName = PlayerPrefs.GetString(NICK_NAME_PREF);
            nickName = String.IsNullOrEmpty(nickName) ? UserName : nickName;
            return nickName;
        }
@@ -48,7 +48,7 @@ namespace Born.FusionTest
            var nickName = nickNameUI.text;
            nickName = String.IsNullOrEmpty(nickName) ? UserName : nickName;
            nickName = nickName.ToUpper();
-           PlayerPrefs.SetString(nickNamePref, nickName);
+           PlayerPrefs.SetString(NICK_NAME_PREF, nickName);
        }
     }
 }

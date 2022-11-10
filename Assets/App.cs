@@ -38,7 +38,5 @@ namespace Born.FusionTest
         {
             Disconnect();
         }
-        
-        
     }
 }
