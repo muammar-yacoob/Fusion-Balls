@@ -1,12 +1,9 @@
-﻿
-using System;
- using UnityEngine;
- using Object = UnityEngine.Object;
- #if UNITY_EDITOR
- using UnityEditor;
- #endif
- 
-namespace Born.FusionTest.Utils
+﻿using System;
+using UnityEditor;
+using UnityEngine;
+using Object = UnityEngine.Object;
+
+namespace Spark.Balls.Utils
  {
      [System.Serializable]
      public class SceneField

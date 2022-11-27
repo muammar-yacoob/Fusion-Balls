@@ -8,7 +8,7 @@ using UnityEngine.UI;
 using System.Linq;
 using System.Reflection;
 
-namespace Born.FusionTest
+namespace Spark.FusionTest
 {
     public class LobbyController : NetworkBehaviour, INetworkRunnerCallbacks
     {

@@ -2,7 +2,7 @@ using Fusion;
 using UnityEditor;
 using UnityEngine;
 
-namespace Born.FusionTest
+namespace Spark.FusionTest
 {
     public class PlayerSetup : NetworkBehaviour
     {

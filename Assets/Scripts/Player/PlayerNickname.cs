@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Born.FusionTest.Player
+namespace Spark.FusionTest.Player
 {
     public class PlayerNickname : NetworkBehaviour
     {

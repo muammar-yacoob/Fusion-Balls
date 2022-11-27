@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.sparkgames.sparkcore": "https://github.com/muammar-yacoob/SparkCore.git?path=Assets/Package",
     "com.unity.feature.development": "1.0.1",
     "com.unity.nuget.mono-cecil": "1.10.2",
     "com.unity.test-framework": "1.1.33",

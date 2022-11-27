@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static System.Environment;
 
-namespace Born.FusionTest
+namespace Spark.FusionTest
 {
     public class MainMenu : MonoBehaviour
     {

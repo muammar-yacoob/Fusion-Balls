@@ -1,11 +1,11 @@
-using Born.FusionTest.Utils;
+using Spark.Balls.Utils;
 using Fusion;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Born.FusionTest
+namespace Spark.FusionTest
 {
-    public class App :  MonoSingleton<App>
+    public class App :  Singleton<App>
     {
         [SerializeField] private SceneField mainMenuScene;
         [SerializeField] private SceneField teacherMenuScene;
@@ -18,7 +18,7 @@ namespace Born.FusionTest
         public string StudentScene => studentMenuScene.SceneName;
         
 
-        protected void Awake()
+        protected override void Awake()
         {
             base.Awake();
             runner = FindObjectOfType<NetworkRunner>();

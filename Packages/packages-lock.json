@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.sparkgames.sparkcore": {
+      "version": "https://github.com/muammar-yacoob/SparkCore.git?path=Assets/Package",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "dee454eab48d54e9d31fb96fc3a90b034c97e062"
+    },
     "com.unity.editorcoroutines": {
       "version": "1.0.0",
       "depth": 1,

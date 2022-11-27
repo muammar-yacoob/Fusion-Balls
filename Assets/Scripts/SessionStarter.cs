@@ -2,7 +2,7 @@
 using Fusion;
 using UnityEngine;
 
-namespace Born.FusionTest
+namespace Spark.FusionTest
 {
     public abstract class SessionStarter : MonoBehaviour
     {
@@ -10,7 +10,7 @@ namespace Born.FusionTest
         private NetworkSceneManagerDefault netSceneManager;
         protected bool JoiningSession;
 
-        private readonly int gameSceneIndex = 3;
+        private readonly int gameSceneIndex = 4;
 
         protected void Awake()
         {

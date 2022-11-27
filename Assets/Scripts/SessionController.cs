@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Fusion;
 using UnityEngine;
 
-namespace Born.FusionTest
+namespace Spark.FusionTest
 {
     public class SessionController : NetworkBehaviour
     {

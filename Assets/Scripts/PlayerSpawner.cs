@@ -3,7 +3,7 @@ using System.Linq;
 using Fusion;
 using UnityEngine;
 
-namespace Born.FusionTest
+namespace Spark.FusionTest
 {
   public class PlayerSpawner : SimulationBehaviour, ISpawned
   {

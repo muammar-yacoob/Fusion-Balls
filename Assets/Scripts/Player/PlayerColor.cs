@@ -2,7 +2,7 @@ using System.Linq;
 using Fusion;
 using UnityEngine;
 
-namespace Born.FusionTest.Player
+namespace Spark.FusionTest.Player
 {
     public class PlayerColor : NetworkBehaviour
     {

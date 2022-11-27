@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Born.FusionTest
+namespace Spark.FusionTest
 {
     public class BackToMainMenuButton : MonoBehaviour
     {

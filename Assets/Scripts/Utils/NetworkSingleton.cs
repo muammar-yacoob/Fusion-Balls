@@ -1,6 +1,6 @@
 using Fusion;
 
-namespace Born.FusionTest.Utils
+namespace Spark.Balls.Utils
 {
     public abstract class NetworkSingleton<T> : NetworkBehaviour where T : NetworkBehaviour
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Born.FusionTest
+namespace Spark.FusionTest
 {
     public class KeymapTutorial : MonoBehaviour
     {

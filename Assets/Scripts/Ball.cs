@@ -1,6 +1,6 @@
 using Fusion;
 
-namespace Born.FusionTest
+namespace Spark.FusionTest
 {
     public class Ball : NetworkBehaviour, IStateAuthorityChanged
     {

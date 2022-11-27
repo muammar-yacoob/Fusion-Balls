@@ -1,8 +1,8 @@
-using Born.FusionTest.Utils;
+using Spark.Balls.Utils;
 using Fusion;
 using UnityEngine;
 
-namespace Born.FusionTest.Player
+namespace Spark.FusionTest.Player
 {
     public class PlayerData : NetworkSingleton<PlayerData>
     {

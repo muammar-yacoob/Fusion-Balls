@@ -2,7 +2,7 @@
 using Fusion;
 using UnityEngine;
 
-namespace Born.FusionTest
+namespace Spark.FusionTest
 {
     public class StartMenuLobby : SessionStarter
     {

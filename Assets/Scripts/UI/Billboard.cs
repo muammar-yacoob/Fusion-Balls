@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Born.UI
+namespace Spark.UI
 {
         public class Billboard : MonoBehaviour
         {
